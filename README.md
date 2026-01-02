@@ -136,7 +136,7 @@ Contributions are what make the open-source community such an amazing place to l
 
 Your Name - [LinkedIn Profile](https://www.linkedin.com/in/heysayanmanna/)
 
-Project Link: [https://github.com/your-username/royal-christmas-2025](https://github.com/your-username/royal-christmas-2025)
+Project Link: (https://github.com/heysayanmanna/royal-christmas-2025)
 
 ---
 
