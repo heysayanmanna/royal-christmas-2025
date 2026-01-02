@@ -17,11 +17,7 @@
     <a href="https://royal-christmas-celebration-2025.netlify.app/"><strong>Explore the Website »</strong></a>
     <br />
     <br />
-    <a href="https://royal-christmas-celebration-2025.netlify.app/">View Demo</a>
-    ·
-    <a href="https://github.com/your-username/royal-christmas-2025/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/your-username/royal-christmas-2025/issues">Request Feature</a>
+
   </p>
 </div>
 
@@ -49,9 +45,7 @@
 
 In a world of simple greeting cards, this project stands out by utilizing **premium UI/UX principles**, **smooth animations**, and a **cinematic soundscape** to create a "Royal" atmosphere for the user. Whether viewed on a desktop or a mobile device, the experience remains fluid and enchanting.
 
-### 📸 Screenshots
-*(Optional: Add a screenshot of your website here by replacing the link below)*
-![App Screenshot](https://via.placeholder.com/800x400.png?text=Add+Your+Website+Screenshot+Here)
+
 
 ---
 
@@ -142,7 +136,7 @@ Contributions are what make the open-source community such an amazing place to l
 
 Your Name - [LinkedIn Profile](https://www.linkedin.com/in/heysayanmanna/)
 
-Project Link : https://github.com/your-username/royal-christmas-2025
+Project Link: [https://github.com/your-username/royal-christmas-2025](https://github.com/your-username/royal-christmas-2025)
 
 ---
 
