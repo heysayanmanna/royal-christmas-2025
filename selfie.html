@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Christmas 2025 | AI Smart Snap</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&family=Rajdhani:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold-gradient: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            --gold-solid: #FFD700;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at center, #1a472a, #0d2e1f, #051410);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+            margin: 0;
+            padding-top: 80px;
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+
+        /* --- ❄️ EMOJI SNOWFALL CSS --- */
+        .snowflake {
+            position: fixed; 
+            top: -20px; 
+            color: #fff; /* সাদা রঙের ইমোজি */
+            z-index: 9999; 
+            pointer-events: none; 
+            animation: fall linear infinite;
+            text-shadow: 0 0 5px rgba(255,255,255,0.8);
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(105vh) rotate(360deg); opacity: 0.3; }
+        }
+
+        /* --- ✨ MOUSE MAGIC TRAIL --- */
+        .trail {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #fcf6ba; /* Gold Color */
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 0 10px #fcf6ba, 0 0 20px #bf953f;
+            animation: particleFade 0.8s linear forwards;
+        }
+        @keyframes particleFade {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0); }
+        }
+
+        /* --- NAVBAR --- */
+        .navbar { background: rgba(10, 20, 15, 0.9) !important; backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 215, 0, 0.2); padding: 15px 0; box-shadow: 0 4px 30px rgba(0,0,0,0.5); z-index: 100; }
+        .navbar-brand { font-family: 'Cinzel', serif; font-weight: 700; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.6rem; letter-spacing: 1px; }
+        .nav-link { color: rgba(255,255,255,0.8) !important; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; transition: 0.3s; }
+        .nav-link:hover, .nav-link.active { color: #fcf6ba !important; text-shadow: 0 0 10px rgba(252, 246, 186, 0.5); }
+        .marquee-wrapper { flex-grow: 1; overflow: hidden; position: relative; height: 100%; display: flex; align-items: center; margin: 0 40px; mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
+        .marquee-text { white-space: nowrap; color: #fcf6ba; font-family: 'Great Vibes', cursive; font-size: 1.5rem; animation: scrollText 25s linear infinite; text-shadow: 0 0 5px rgba(255, 215, 0, 0.3); }
+        @keyframes scrollText { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+        /* --- CAMERA UI --- */
+        .camera-section { padding: 10px; width: 100%; max-width: 400px; margin: 0 auto; flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; z-index: 10; }
+        
+        /* 3:4 Aspect Ratio Container */
+        .viewfinder-wrapper { position: relative; width: 100%; aspect-ratio: 3/4; background: #000; border-radius: 25px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(255, 215, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); }
+        
+        #camera-video { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); filter: contrast(1.1) saturate(1.2); }
+        
+        .grid-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; background: linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 33.3% 33.3%; }
+        .hud-corner { position: absolute; width: 30px; height: 30px; border: 2px solid #fcf6ba; box-shadow: 0 0 8px rgba(252, 246, 186, 0.5); opacity: 0.7; }
+        .c-tl { top: 15px; left: 15px; border-right: none; border-bottom: none; border-radius: 8px 0 0 0; }
+        .c-tr { top: 15px; right: 15px; border-left: none; border-bottom: none; border-radius: 0 8px 0 0; }
+        .c-bl { bottom: 15px; left: 15px; border-right: none; border-top: none; border-radius: 0 0 0 8px; }
+        .c-br { bottom: 15px; right: 15px; border-left: none; border-top: none; border-radius: 0 0 8px 0; }
+        .scanner-line { position: absolute; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, #ff3333, transparent); box-shadow: 0 0 15px #ff3333; top: 0; animation: scan 3s ease-in-out infinite; opacity: 0.6; z-index: 6; }
+        @keyframes scan { 0%, 100% { top: 5%; opacity: 0; } 50% { opacity: 1; } 100% { top: 95%; opacity: 0; } }
+        
+        #ar-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 4; pointer-events: none; }
+        .royal-frame { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 15px solid transparent; border-image: url('https://www.transparenttextures.com/patterns/gold-scale.png') 30 round; box-shadow: inset 0 0 30px rgba(0,0,0,0.6); display: none; }
+        
+        /* ✅ SANTA HAT (LIVE PREVIEW) */
+        .santa-hat { 
+            width: 60%; 
+            position: absolute; 
+            top: 10%; 
+            left: 20%; 
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)); 
+            display: none; 
+            animation: float 3s infinite ease-in-out; 
+            z-index: 10;
+        }
+        @keyframes float { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-5px) rotate(2deg)} }
+        
+        #custom-input { position: absolute; bottom: 10%; left: 50%; transform: translateX(-50%); width: 80%; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3); color: #fcf6ba; padding: 8px; text-align: center; border-radius: 50px; font-family: 'Cinzel', serif; font-size: 0.9rem; display: none; pointer-events: auto; }
+        #custom-input:focus { outline: none; border-color: #fcf6ba; box-shadow: 0 0 15px rgba(252, 246, 186, 0.3); }
+
+        .mode-switcher { display: flex; justify-content: center; gap: 8px; margin: 15px 0; background: rgba(0,0,0,0.3); padding: 4px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); }
+        .mode-pill { padding: 6px 15px; border-radius: 30px; color: rgba(255,255,255,0.7); cursor: pointer; transition: 0.4s; font-family: 'Rajdhani', sans-serif; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; font-size: 0.75rem; }
+        .mode-pill.active { color: #000; background: var(--gold-gradient); box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); }
+
+        .shutter-wrapper { position: relative; width: 70px; height: 70px; margin: 5px auto 10px auto; display: flex; align-items: center; justify-content: center; }
+        .snap-btn { width: 55px; height: 55px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #ffffff, #dcdcdc, #a0a0a0); border: 3px solid #333; cursor: pointer; position: relative; z-index: 2; transition: 0.2s; box-shadow: 0 5px 10px rgba(0,0,0,0.5), inset 0 0 10px rgba(255,255,255,0.8); }
+        .snap-btn:active { transform: scale(0.95); }
+        .snap-ring { position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 2px solid #fcf6ba; animation: pulseRing 2s infinite; z-index: 1; opacity: 0.5; }
+        @keyframes pulseRing { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.4); opacity: 0; } }
+
+        #magic-message-box { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 12px; padding: 10px 20px; margin-top: 5px; margin-bottom: 20px; max-width: 95%; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3); animation: floatMsg 4s ease-in-out infinite; }
+        @keyframes floatMsg { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+        #magic-text { font-family: 'Great Vibes', cursive; font-size: 1.3rem; color: #fcf6ba; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+
+        .preview-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(10px); z-index: 9999; display: none; flex-direction: column; align-items: center; justify-content: center; }
+        .polaroid-frame { background: #fff; padding: 10px 10px 50px 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.9); transform: rotate(-3deg) scale(0.9); max-width: 85vw; width: 320px; transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; }
+        .polaroid-frame.develop { transform: rotate(0deg) scale(1); opacity: 1; }
+        .polaroid-frame img { width: 100%; display: block; filter: brightness(10) contrast(0) sepia(1); transition: filter 3s ease-in-out; border: 1px solid #eee; }
+        .polaroid-frame.develop img { filter: brightness(1) contrast(1.1) sepia(0.05); }
+        .ai-caption-box { margin-top: 8px; font-family: 'Great Vibes', cursive; font-size: 1.6rem; color: #222; }
+
+        .ceo-footer { text-align: center; padding: 15px 0; background: rgba(0,0,0,0.8); margin-top: auto; position: relative; z-index: 10; }
+        .copyright-bar { background: #000; padding: 10px 20px; border-top: 1px solid rgba(255, 215, 0, 0.2); }
+        .gold-text-footer { color: var(--gold-solid); font-family: 'Rajdhani', sans-serif; font-weight: 600; letter-spacing: 1px; font-size: 0.85rem; margin: 0; text-shadow: 0 0 5px rgba(255, 215, 0, 0.3); }
+
+        #flash-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 99999; opacity: 0; pointer-events: none; }
+        .flash-active { animation: flashAnim 0.4s ease-out forwards; }
+        @keyframes flashAnim { 0% { opacity: 1; } 100% { opacity: 0; } }
+
+        /* --- Active Link Style --- */
+        .nav-link.active { font-weight: 900 !important; background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.4); border-bottom: 2px solid #fcf6ba; transform: scale(1.1); }
+    </style>
+</head>
+<body>
+
+    <div id="snow-container"></div>
+    <div id="flash-overlay"></div>
+    
+    <audio id="bg-music" loop>
+        <source src="music/music.mp3" type="audio/mp3">
+    </audio>
+
+    <audio id="shutter-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-camera-shutter-click-1133.mp3"></audio>
+    <audio id="print-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-paper-slide-1530.mp3"></audio>
+
+    <div onclick="toggleMusic()" style="position: fixed; bottom: 30px; left: 30px; width: 50px; height: 50px; background: rgba(0,0,0,0.5); border: 1px solid gold; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; backdrop-filter: blur(5px);">
+        <i class="fas fa-music text-warning" id="music-icon"></i>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="#"><i class="fas fa-tree text-warning me-2"></i> Christmas 2025</a>
+            <div class="marquee-wrapper"><div class="marquee-text">✨ Capture the Royal Magic! May this season bring you endless joy & peace! 🎄🎁</div></div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Celebration.html">Celebration</a></li>
+                    <li class="nav-item"><a class="nav-link" href="History.html">History</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Wishes.html">Wishes</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="selfie.html">SnapZone</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="camera-section">
+        <div class="mode-switcher" data-aos="fade-down">
+            <div class="mode-pill active" onclick="setMode('classic')" id="btn-classic"><i class="fas fa-crown"></i> Royal</div>
+            <div class="mode-pill" onclick="setMode('santa')" id="btn-santa"><i class="fas fa-hat-santa"></i> Santa AI</div>
+            <div class="mode-pill" onclick="setMode('custom')" id="btn-custom"><i class="fas fa-magic"></i> Custom</div>
+        </div>
+
+        <div class="viewfinder-wrapper" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="grid-overlay"></div> 
+            <div class="hud-corner c-tl"></div><div class="hud-corner c-tr"></div>
+            <div class="hud-corner c-bl"></div><div class="hud-corner c-br"></div>
+            <div class="scanner-line"></div>
+            
+            <div id="ar-layer">
+                <div class="royal-frame" id="asset-frame"></div>
+                <img src="Images/santa-hat.png" class="santa-hat" id="asset-hat">
+                <input type="text" id="custom-input" placeholder="Type your wish... ✨">
+            </div>
+
+            <video id="camera-video" autoplay playsinline></video>
+            <canvas id="capture-canvas" style="display: none;"></canvas>
+            
+            <div style="position:absolute; top:10px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.6); padding:3px 10px; border-radius:20px; font-size:0.6rem; letter-spacing:1px; border:1px solid #fcf6ba; color:#fcf6ba; font-weight:bold;">
+                <i class="fas fa-bolt"></i> 4K READY
+            </div>
+        </div>
+
+        <div class="shutter-wrapper">
+            <div class="snap-ring"></div>
+            <button class="snap-btn" onclick="snapPhoto()"></button>
+        </div>
+
+        <div id="magic-message-box">
+            <span id="magic-text">✨ Detecting Holiday Spirit...</span>
+        </div>
+    </section>
+
+    <footer class="ceo-footer">
+        <div class="container mb-3">
+            <p style="font-family: 'Great Vibes'; font-size: 1.6rem; color: #fcf6ba; margin-bottom: 2px;">"Preserve your royal moments forever..."</p>
+        </div>
+        <div class="copyright-bar">
+            <p class="gold-text-footer mb-0"style="color: #f8f8f6; font-family: 'sans-serif'; letter-spacing: 1px;">
+               © 2025 INDIA -THE CITY OF JOY .❤️. All rights reserved. Unauthorized use prohibited.
+            </p>
+        </div>
+    </footer>
+
+    <div class="preview-modal" id="preview-modal">
+        <div class="polaroid-frame" id="polaroid-card">
+            <img id="final-image" src="" alt="Memory">
+            <div class="text-center">
+                <div class="ai-caption-box" id="final-caption">Merry Christmas</div>
+                <div class="ai-tag" id="ai-comment" style="color:#d42426; font-weight:bold; font-size:0.8rem;">Analyzing Aura...</div>
+            </div>
+        </div>
+        
+        <div class="mt-5 d-flex gap-3">
+            <a id="download-btn" class="btn btn-lg rounded-pill px-5 fw-bold shadow" 
+               style="background: var(--gold-gradient); color: black; border:none; font-family: 'Rajdhani'; letter-spacing: 2px;">
+               <i class="fas fa-download me-2"></i> SAVE
+            </a>
+            <button class="btn btn-lg btn-outline-light rounded-circle" style="width: 50px; height: 50px;" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        AOS.init();
+
+        /* --- MUSIC LOGIC --- */
+        let isPlaying = false;
+        function toggleMusic() { 
+            const audio = document.getElementById('bg-music'); 
+            const icon = document.getElementById('music-icon'); 
+            if (isPlaying) { 
+                audio.pause(); 
+                icon.className = "fas fa-music text-warning"; 
+            } else { 
+                audio.play(); 
+                icon.className = "fas fa-pause text-white"; 
+            } 
+            isPlaying = !isPlaying; 
+        }
+
+        document.body.addEventListener('click', function() {
+            const audio = document.getElementById('bg-music');
+            if(audio.paused) {
+                audio.play();
+                document.getElementById('music-icon').className = "fas fa-pause text-white";
+                isPlaying = true;
+            }
+        }, { once: true });
+
+        // --- ✅ REALISTIC SNOWFALL JS ---
+        function createSnow() { 
+            const snowContainer = document.getElementById('snow-container');
+            if(!snowContainer) return;
+            const snow = document.createElement('div'); 
+            snow.className = 'snowflake'; 
+            
+            // ❄ ইমোজি ব্যবহার করা হচ্ছে
+            snow.innerHTML = '❄';
+            
+            // Random Position
+            snow.style.left = Math.random() * 100 + 'vw';
+            
+            // Random Size (10px - 30px)
+            const size = Math.random() * 20 + 10; 
+            snow.style.fontSize = size + 'px';
+            
+            // Random Duration & Opacity
+            snow.style.animationDuration = Math.random() * 3 + 2 + 's'; 
+            snow.style.opacity = Math.random() * 0.7 + 0.3;
+            
+            snowContainer.appendChild(snow); 
+            
+            // Cleanup
+            setTimeout(() => snow.remove(), 5000); 
+        } 
+        setInterval(createSnow, 100);
+
+        // --- ✅ MOUSE MAGIC TRAIL ---
+        document.addEventListener('mousemove', (e) => { 
+            const trail = document.createElement('div'); 
+            trail.className = 'trail'; 
+            trail.style.left = e.pageX + 'px'; 
+            trail.style.top = e.pageY + 'px'; 
+            document.body.appendChild(trail); 
+            setTimeout(() => trail.remove(), 800); 
+        });
+
+        /* --- CAMERA LOGIC --- */
+        let currentMode = 'classic';
+        const video = document.getElementById('camera-video');
+        const canvas = document.getElementById('capture-canvas');
+        const ctx = canvas.getContext('2d');
+        const THEME_GOLD = '#bf953f';
+
+        async function initCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { width: { ideal: 3840 }, height: { ideal: 2160 }, facingMode: "user" } 
+                });
+                video.srcObject = stream;
+            } catch (err) { alert("Please allow camera access!"); }
+        }
+        initCamera();
+
+        const funMessages = ["Santa is watching you! 🎅", "You look SLEIGH-in'! 🛷", "Naughty or Nice? 🤔", "Warning: Cuteness Overload! 😍", "Elf Aura Detected! 🧝", "Shine bright like a Star! ⭐"];
+
+        function generateMessage() {
+            const msg = funMessages[Math.floor(Math.random() * funMessages.length)];
+            const textBox = document.getElementById('magic-text');
+            textBox.style.opacity = 0;
+            setTimeout(() => { textBox.innerText = msg; textBox.style.opacity = 1; }, 300);
+        }
+        generateMessage();
+
+        function setMode(mode) {
+            currentMode = mode;
+            document.querySelectorAll('.mode-pill').forEach(p => p.classList.remove('active'));
+            document.getElementById(`btn-${mode}`).classList.add('active');
+            document.getElementById('asset-frame').style.display = 'none';
+            document.getElementById('asset-hat').style.display = 'none';
+            document.getElementById('custom-input').style.display = 'none';
+            
+            if(mode === 'classic') {
+                document.getElementById('asset-frame').style.display = 'block';
+                video.style.filter = "contrast(1.15) saturate(1.2)";
+            } else if(mode === 'santa') {
+                document.getElementById('asset-hat').style.display = 'block';
+                video.style.filter = "none";
+            } else {
+                document.getElementById('custom-input').style.display = 'block';
+                video.style.filter = "contrast(1.2)";
+            }
+        }
+        setMode('classic');
+
+        function snapPhoto() {
+            const flash = document.getElementById('flash-overlay');
+            flash.classList.remove('flash-active');
+            void flash.offsetWidth; 
+            flash.classList.add('flash-active');
+            
+            document.getElementById('shutter-sound').currentTime = 0;
+            document.getElementById('shutter-sound').play();
+            generateMessage();
+
+            const targetRatio = 0.75; 
+            const videoRatio = video.videoWidth / video.videoHeight;
+            
+            let sourceWidth = video.videoWidth;
+            let sourceHeight = video.videoHeight;
+            let startX = 0;
+            let startY = 0;
+
+            if (videoRatio > targetRatio) {
+                sourceWidth = video.videoHeight * targetRatio;
+                startX = (video.videoWidth - sourceWidth) / 2;
+            } else {
+                sourceHeight = video.videoWidth / targetRatio;
+                startY = (video.videoHeight - sourceHeight) / 2;
+            }
+
+            canvas.width = sourceWidth;
+            canvas.height = sourceHeight;
+
+            ctx.save();
+            ctx.scale(-1, 1);
+            ctx.drawImage(video, startX, startY, sourceWidth, sourceHeight, -canvas.width, 0, canvas.width, canvas.height);
+            ctx.restore();
+
+            let caption = "Royal Christmas";
+            let aiTag = "✨ Pure Magic";
+
+            if(currentMode === 'classic') {
+                ctx.strokeStyle = THEME_GOLD; ctx.lineWidth = canvas.width * 0.05; 
+                ctx.strokeRect(0,0,canvas.width,canvas.height);
+                ctx.font = `bold ${canvas.width*0.08}px 'Great Vibes'`;
+                ctx.fillStyle = THEME_GOLD; ctx.textAlign = "center";
+                ctx.shadowColor="black"; ctx.shadowBlur=15;
+                ctx.fillText("Merry Christmas 2025", canvas.width/2, canvas.height - (canvas.height*0.1));
+                caption = "Royal Edition"; aiTag = "👑 Royal Aura Detected";
+            } 
+            else if (currentMode === 'santa') {
+                const img = document.getElementById('asset-hat');
+                const hatWidth = canvas.width * 0.62; 
+                const hatHeight = hatWidth * 0.6; 
+                const hatX = (canvas.width * 0.5) - (hatWidth / 2);
+                const hatY = canvas.height * 0.12; 
+                
+                ctx.shadowColor = "rgba(0,0,0,0.6)"; ctx.shadowBlur = 15; ctx.shadowOffsetY = 10;
+                ctx.drawImage(img, hatX, hatY, hatWidth, hatHeight);
+                ctx.shadowColor = "transparent"; ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
+
+                const statuses = ["NICE 😇", "NAUGHTY 😈", "SANTA'S FAV 🎅"];
+                const result = statuses[Math.floor(Math.random() * statuses.length)];
+                ctx.font = `bold ${canvas.width*0.06}px 'Rajdhani'`;
+                ctx.fillStyle = "white"; ctx.textAlign = "center";
+                ctx.shadowColor="black"; ctx.shadowBlur=5;
+                ctx.fillText(`STATUS: ${result}`, canvas.width/2, canvas.height - (canvas.height*0.1));
+                caption = "Santa Scan"; aiTag = result;
+            }
+            else if (currentMode === 'custom') {
+                const txt = document.getElementById('custom-input').value || "My Wish";
+                ctx.font = `italic ${canvas.width*0.07}px 'Playfair Display'`;
+                ctx.fillStyle = "white"; ctx.textAlign = "center";
+                ctx.shadowColor="black"; ctx.shadowBlur=10;
+                ctx.fillText(txt, canvas.width/2, canvas.height - (canvas.height*0.15));
+                ctx.font = `${canvas.width*0.03}px 'Courier New'`;
+                ctx.fillText("RAW 4K • 25.12.2025", canvas.width/2, canvas.height - (canvas.height*0.05));
+                caption = "Pro Custom"; aiTag = "📸 Perfect Exposure";
+            }
+
+            const dataUrl = canvas.toDataURL('image/jpeg', 0.95);
+            document.getElementById('final-image').src = dataUrl;
+            document.getElementById('final-caption').innerText = caption;
+            document.getElementById('ai-comment').innerText = aiTag;
+            document.getElementById('download-btn').href = dataUrl;
+            document.getElementById('download-btn').download = `Royal_Xmas_${Date.now()}.jpg`;
+
+            const modal = document.getElementById('preview-modal');
+            modal.style.display = 'flex';
+            document.getElementById('print-sound').currentTime = 0;
+            document.getElementById('print-sound').play();
+
+            const polaroid = document.getElementById('polaroid-card');
+            polaroid.classList.remove('develop');
+            void polaroid.offsetWidth; 
+            setTimeout(() => polaroid.classList.add('develop'), 100);
+        }
+
+        function closeModal() { document.getElementById('preview-modal').style.display = 'none'; }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

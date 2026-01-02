@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Christmas 2025 | Mood & Community Edition</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* --- Page Specific Styles --- */
+        
+        /* Magic Mouse Trail Style */
+        .trail {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #fcf6ba; /* Gold Color */
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 0 10px #fcf6ba, 0 0 20px #bf953f;
+            animation: particleFade 0.8s linear forwards;
+        }
+        @keyframes particleFade {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0); }
+        }
+
+        /* Navbar Active Style */
+        .nav-link.active {
+            font-weight: 900 !important;
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+            border-bottom: 2px solid #fcf6ba;
+            transform: scale(1.1);
+        }
+
+        /* Community Wall & Other Styles (Inline backup) */
+        .wall-container { height: 500px; overflow: hidden; position: relative; background: rgba(255, 255, 255, 0.02); border-top: 1px solid rgba(255, 255, 255, 0.1); border-bottom: 1px solid rgba(255, 255, 255, 0.1); mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent); }
+        .wall-scroll { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; animation: autoScroll 30s linear infinite; }
+        .wall-container:hover .wall-scroll { animation-play-state: paused; }
+        @keyframes autoScroll { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+        
+        .wall-card { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 20px; width: 250px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: 0.3s; }
+        .wall-card:hover { transform: scale(1.05); background: rgba(255, 255, 255, 0.12); border-color: #fcf6ba; }
+        .wall-card h5 { font-family: 'Cinzel', serif; font-size: 0.9rem; color: #fcf6ba; margin-bottom: 10px; }
+        .wall-card p { font-size: 0.9rem; font-style: italic; color: #eee; }
+
+        .mood-btn { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); color: white; padding: 15px 30px; margin: 10px; border-radius: 50px; font-size: 1.2rem; cursor: pointer; transition: all 0.3s ease; }
+        .mood-btn:hover, .mood-btn.active { background: rgba(255, 215, 0, 0.2); border-color: #fcf6ba; box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); transform: translateY(-3px); }
+        
+        .wish-display-card { background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); backdrop-filter: blur(15px); border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 15px; padding: 30px; text-align: center; min-height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; opacity: 0; transform: translateY(20px); }
+        .wish-display-card.show { opacity: 1; transform: translateY(0); }
+        .wish-text { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-style: italic; color: #fff; margin-bottom: 15px; }
+        .wish-category { text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; color: #fcf6ba; margin-bottom: 15px; }
+
+        .post-wish-container { background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 20px; padding: 40px; max-width: 800px; margin: 0 auto 60px auto; backdrop-filter: blur(10px); box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+        .glass-input { width: 100%; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 10px; padding: 15px; color: white; font-family: 'Poppins', sans-serif; margin-bottom: 20px; transition: 0.3s; }
+        .glass-input:focus { background: rgba(255, 255, 255, 0.15); outline: none; border-color: #fcf6ba; }
+        .btn-sparkle { background: linear-gradient(45deg, #d42426, #ff4d4d); border: none; color: white; padding: 15px 40px; font-size: 1.2rem; border-radius: 50px; cursor: pointer; transition: 0.3s; position: relative; box-shadow: 0 5px 15px rgba(212, 36, 38, 0.4); }
+        .btn-sparkle:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 77, 77, 0.6); }
+        
+        .sparkle { position: absolute; background: #fcf6ba; width: 5px; height: 5px; border-radius: 50%; pointer-events: none; animation: explode 0.8s forwards; }
+        @keyframes explode { 0% { transform: scale(1); opacity: 1; } 100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <div id="snow-container"></div>
+    
+    <audio id="bg-music" loop>
+        <source src="music/music.mp3" type="audio/mp3">
+    </audio>
+
+    <div onclick="toggleMusic()" style="position: fixed; bottom: 30px; left: 30px; width: 50px; height: 50px; background: rgba(0,0,0,0.5); border: 1px solid gold; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; backdrop-filter: blur(5px);">
+        <i class="fas fa-music text-warning" id="music-icon"></i>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="#"><i class="fas fa-tree text-warning me-2"></i> Christmas 2025</a>
+            
+            <div class="marquee-wrapper">
+                <div class="marquee-text">✨ May this season bring you endless joy, love, and peace! Wishing you a Merry Christmas and a Happy New Year 2025! 🎄🎁</div>
+            </div>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Celebration.html">Celebration</a></li>
+                    <li class="nav-item"><a class="nav-link" href="History.html">History</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="Wishes.html">Wishes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="selfie.html">SnapZone</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="wishes" class="page-section" style="display: block; padding-top: 100px;">
+        <div class="container">
+            <h2 class="premium-title">Wishes & Community 🎁</h2>
+            
+            <div class="mood-container" data-aos="fade-down">
+                <h4 class="mb-4 text-warning text-center">How is your Christmas Spirit today?</h4>
+                <div class="d-flex justify-content-center flex-wrap">
+                    <button class="mood-btn" onclick="selectMood('joy')">😊 Joyful & Fun</button>
+                    <button class="mood-btn" onclick="selectMood('grateful')">🙏 Grateful & Blessed</button>
+                    <button class="mood-btn" onclick="selectMood('peace')">😌 Peaceful & Calm</button>
+                </div>
+            </div>
+
+            <div id="wishes-grid" class="row g-4 mb-5" style="min-height: 250px;">
+                <div class="col-12 text-center text-muted fst-italic mt-5">Select a mood to reveal your blessings...</div>
+            </div>
+
+            <div class="post-wish-container" data-aos="fade-up">
+                <h3 class="text-center text-warning mb-4" style="font-family: 'Cinzel', serif;">✨ Share Your Wish ✨</h3>
+                <input type="text" id="user-name" class="glass-input" placeholder="Your Name (Optional)">
+                <textarea id="user-wish" class="glass-input" rows="3" placeholder="Type your heart's wish here... 🎄"></textarea>
+                <div class="text-center">
+                    <button class="btn-sparkle" onclick="postWish(event)">Post Wish to Wall 🎄</button>
+                </div>
+            </div>
+
+            <div class="mt-5" data-aos="fade-up">
+                <h3 class="text-center text-white mb-3" style="font-family: 'Cinzel', serif;">Community Christmas Wall 🌍</h3>
+                
+                <div class="wall-container">
+                    <div class="wall-scroll" id="community-wall">
+                        <div class="wall-card"><h5>Sarah M.</h5><p>"Wishing everyone peace and joy from Canada! ❄️"</p></div>
+                        <div class="wall-card"><h5>Rajiv D.</h5><p>"Merry Christmas from Kolkata! Enjoy the cake! 🍰"</p></div>
+                        <div class="wall-card"><h5>Emma W.</h5><p>"Hope 2025 brings love to all my friends. ❤️"</p></div>
+                        <div class="wall-card"><h5>Carlos</h5><p>"Feliz Navidad! Blessings to the world. 🌎"</p></div>
+                        <div class="wall-card"><h5>Anya</h5><p>"May your days be merry and bright! ✨"</p></div>
+                        <div class="wall-card"><h5>Liam</h5><p>"Can't wait for Santa! 🎅 Ho ho ho!"</p></div>
+                        <div class="wall-card"><h5>Priya</h5><p>"Sending warm hugs to my family abroad."</p></div>
+                        <div class="wall-card"><h5>John</h5><p>"Peace on Earth. 🕊️"</p></div>
+                        <div class="wall-card"><h5>Yuki</h5><p>"Happy Holidays from Tokyo! 🗼"</p></div>
+                        <div class="wall-card"><h5>Fatima</h5><p>"Joy and happiness to everyone!"</p></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5 text-muted small">
+                <i class="fas fa-pray"></i> "Lord, make me an instrument of your peace."
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-4 mt-5" style="background: rgba(0,0,0,0.8); border-top: 1px solid #333;">
+        <p class="mb-0" style="color: #f8f8f6; font-family: 'sans-serif'; letter-spacing: 1px;">© 2025 INDIA - THE CITY OF JOY ❤️ All rights reserved. Unauthorized use prohibited.</p>
+        <small class="text-muted">Kolkata • Global Edition</small>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="script.js"></script>
+
+    <script>
+        // Init Animations
+        AOS.init({ duration: 1000, once: false, mirror: true });
+
+        // Seamless Wall Scrolling Logic
+        document.addEventListener("DOMContentLoaded", function() {
+            const wall = document.getElementById('community-wall');
+            if(wall) {
+                wall.innerHTML += wall.innerHTML; // Duplicate content for seamless loop
+            }
+        });
+
+        // ✅ MOUSE MAGIC TRAIL ADDED HERE
+        document.addEventListener('mousemove', (e) => {
+            const trail = document.createElement('div');
+            trail.className = 'trail';
+            trail.style.left = e.pageX + 'px';
+            trail.style.top = e.pageY + 'px';
+            document.body.appendChild(trail);
+            setTimeout(() => trail.remove(), 800);
+        });
+
+        // Mood Logic
+        const wishesDB = {
+            joy: ["May your Christmas be filled with laughter! 🎉", "Eat, drink, and be merry! 🎸", "Ho! Ho! Ho! Santa is coming! 🎅", "Jingle all the way! 🔔", "Sweet surprises ahead! 🍬"],
+            grateful: ["Grateful for family and friends. 🙏", "Counting my blessings. Merry Christmas.", "God's love surround you. ✝️", "Thankful for memories.", "Prayers of health for 2025."],
+            peace: ["Peace and joy to you. 🕊️", "Silent night, holy night.", "Relax and enjoy the magic. ❄️", "Quiet and cozy days.", "Tranquil vibes to you."]
+        };
+
+        function selectMood(mood) {
+            document.querySelectorAll('.mood-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            const category = wishesDB[mood];
+            const shuffled = category.sort(() => 0.5 - Math.random()).slice(0, 3);
+            const grid = document.getElementById('wishes-grid');
+            grid.innerHTML = ''; 
+            shuffled.forEach((text, index) => {
+                const col = document.createElement('div');
+                col.className = 'col-md-4';
+                col.innerHTML = `<div class="wish-display-card" style="transition-delay: ${index * 100}ms"><div class="wish-category"><i class="fas fa-star text-warning"></i> ${mood.toUpperCase()} VIBES</div><p class="wish-text">"${text}"</p><button class="btn btn-sm btn-outline-light rounded-pill" onclick="copyText(this, '${text}')">Copy</button></div>`;
+                grid.appendChild(col);
+                setTimeout(() => { col.querySelector('.wish-display-card').classList.add('show'); }, 50);
+            });
+        }
+
+        // Post Wish Logic
+        function postWish(e) {
+            const nameInput = document.getElementById('user-name');
+            const wishInput = document.getElementById('user-wish');
+            const name = nameInput.value || "Anonymous";
+            const wish = wishInput.value;
+
+            if(!wish) return alert("Please type a wish first!");
+
+            createSparkles(e.target);
+
+            const wall = document.getElementById('community-wall');
+            const newCardHTML = `
+                <div class="wall-card" style="border: 2px solid gold; box-shadow: 0 0 15px gold;">
+                    <h5 style="color: #fff;">${name} (You)</h5>
+                    <p>"${wish}"</p>
+                </div>
+            `;
+            
+            wall.insertAdjacentHTML('afterbegin', newCardHTML);
+            wall.style.animation = 'none';
+            wall.offsetHeight; 
+            wall.style.animation = 'autoScroll 30s linear infinite';
+
+            wishInput.value = '';
+            alert("Your wish is posted on the Wall! Look at the top! 🎄");
+        }
+
+        function createSparkles(btn) {
+            const rect = btn.getBoundingClientRect();
+            for(let i=0; i<20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                sparkle.style.setProperty('--x', (Math.random() - 0.5) * 150 + 'px');
+                sparkle.style.setProperty('--y', (Math.random() - 0.5) * 150 + 'px');
+                sparkle.style.left = rect.width/2 + 'px';
+                sparkle.style.top = rect.height/2 + 'px';
+                btn.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 800);
+            }
+        }
+        function copyText(btn, text) { navigator.clipboard.writeText(text); btn.innerText = "Copied!"; setTimeout(() => btn.innerText = "Copy", 2000); }
+
+        // Snow & Music
+        function createSnow() { const snow = document.createElement('div'); snow.className = 'snowflake'; snow.innerHTML = '❄'; snow.style.left = Math.random() * 100 + 'vw'; snow.style.fontSize = Math.random() * 10 + 10 + 'px'; snow.style.opacity = Math.random(); snow.style.animationDuration = Math.random() * 3 + 3 + 's'; document.getElementById('snow-container').appendChild(snow); setTimeout(() => snow.remove(), 6000); } setInterval(createSnow, 200);
+        
+        let isPlaying = false;
+        function toggleMusic() { 
+            const audio = document.getElementById('bg-music'); 
+            const icon = document.getElementById('music-icon'); 
+            if (isPlaying) { audio.pause(); icon.className = "fas fa-music text-warning"; } 
+            else { audio.play(); icon.className = "fas fa-pause text-white"; } 
+            isPlaying = !isPlaying; 
+        }
+        document.body.addEventListener('click', function() {
+            const audio = document.getElementById('bg-music');
+            if(audio.paused) { audio.play(); document.getElementById('music-icon').className = "fas fa-pause text-white"; isPlaying = true; }
+        }, { once: true });
+    </script>
+
+</body>
+</html>

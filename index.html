@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Christmas 2025 | Premium Celebration</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&family=Rajdhani:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* --- Navbar Active Style --- */
+        .nav-link.active {
+            font-weight: 900 !important;
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+            border-bottom: 2px solid #fcf6ba;
+            transform: scale(1.1);
+        }
+        
+        /* --- ❄️ REALISTIC EMOJI SNOWFALL CSS --- */
+        #snow-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; overflow: hidden;
+        }
+        .snowflake {
+            position: absolute; 
+            top: -20px; 
+            color: #fff; /* White Emoji Color */
+            z-index: 9999; 
+            pointer-events: none; 
+            animation: fall linear infinite;
+            text-shadow: 0 0 5px rgba(255,255,255,0.8);
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(105vh) translateX(20px) rotate(360deg); opacity: 0.3; }
+        }
+        
+        /* --- ✨ MOUSE MAGIC TRAIL --- */
+        .sparkle {
+            position: absolute; width: 6px; height: 6px; background: #fcf6ba;
+            border-radius: 50%; pointer-events: none; z-index: 9999;
+            box-shadow: 0 0 10px #fcf6ba, 0 0 20px #bf953f; 
+            animation: particleFade 0.8s linear forwards;
+        }
+        @keyframes particleFade { 
+            0% { opacity: 1; transform: scale(1); } 
+            100% { opacity: 0; transform: scale(0); } 
+        }
+    </style>
+</head>
+<body>
+
+    <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #000; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.8s ease;">
+        <div class="loader-gift" style="font-size: 4rem; animation: bounce 1s infinite alternate;">🎁</div>
+        <h2 style="color: gold; margin-top: 10px; font-family: 'Cinzel';">Loading Magic...</h2>
+    </div>
+    
+    <div id="snow-container"></div>
+
+    <audio id="bg-music" loop>
+        <source src="music/music.mp3" type="audio/mp3">
+    </audio>
+
+    <div onclick="toggleMusic()" style="position: fixed; bottom: 30px; left: 30px; width: 50px; height: 50px; background: rgba(0,0,0,0.5); border: 1px solid gold; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; backdrop-filter: blur(5px);">
+        <i class="fas fa-music text-warning" id="music-icon"></i>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="#"><i class="fas fa-tree text-warning me-2"></i> Christmas 2025</a>
+            
+            <div class="marquee-wrapper">
+                <div class="marquee-text">
+                    ✨ May this season bring you endless joy, love, and peace! Wishing you a Merry Christmas and a Happy New Year 2025! 🎄🎁
+                </div>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Celebration.html">Celebration</a></li>
+                    <li class="nav-item"><a class="nav-link" href="History.html">History</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Wishes.html">Wishes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="selfie.html">SnapZone</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="page-section active d-flex align-items-center" style="min-height: 90vh;">
+        <div class="container text-center" style="position: relative; z-index: 2;">
+            <p class="text-uppercase text-warning mb-0" style="letter-spacing: 5px; font-size: 2.1rem;">The Season of Joy</p>
+            <br><br>
+            <h1 class="script-font mb-4" style="font-family: 'Great Vibes'; font-size: 6.1rem; color: #fcf6ba; margin-bottom: 2px;">Merry Christmas</h1>
+            
+            <div class="row justify-content-center g-3 mb-5">
+                <div class="col-3 col-md-2"><div class="countdown-box"><div class="countdown-number" id="days">00</div><div class="countdown-label">Days</div></div></div>
+                <div class="col-3 col-md-2"><div class="countdown-box"><div class="countdown-number" id="hours">00</div><div class="countdown-label">Hours</div></div></div>
+                <div class="col-3 col-md-2"><div class="countdown-box"><div class="countdown-number" id="minutes">00</div><div class="countdown-label">Mins</div></div></div>
+                <div class="col-3 col-md-2"><div class="countdown-box"><div class="countdown-number" id="seconds">00</div><div class="countdown-label">Secs</div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-4 mt-5" style="background: rgba(0,0,0,0.8); border-top: 1px solid #333;">
+        <p class="mb-0" style="color: #d6d6d4; font-family: 'sans-serif'; letter-spacing: 1px;">© 2025 INDIA -THE CITY OF JOY .❤️. All rights reserved. Unauthorized use prohibited.</p>
+        <small class="text-muted">Kolkata • Global Edition</small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script src="script.js"></script>
+
+    <script>
+        // 1. Init Animations
+        AOS.init({ duration: 1000, once: false, mirror: true });
+
+        // 2. Preloader Fix
+        window.addEventListener("load", () => {
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                if(preloader) {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => { preloader.style.display = 'none'; }, 500);
+                }
+            }, 2500);
+        });
+
+        // 3. Countdown Logic
+        const target = new Date("Dec 25, 2025 00:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const d = target - now;
+            if (d < 0) {
+                document.getElementById("days").innerText = "00";
+            } else {
+                document.getElementById("days").innerText = Math.floor(d / (1000 * 60 * 60 * 24));
+                document.getElementById("hours").innerText = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById("minutes").innerText = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById("seconds").innerText = Math.floor((d % (1000 * 60)) / 1000);
+            }
+        }, 1000);
+
+        // 4. ✅ REALISTIC EMOJI SNOWFALL (❄)
+        function createSnow() { 
+            const snowContainer = document.getElementById('snow-container');
+            if(!snowContainer) return;
+            
+            const snow = document.createElement('div'); 
+            snow.className = 'snowflake'; 
+            
+            // Random Symbol
+            const symbols = ['❄', '❅', '❆', '•'];
+            snow.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+            
+            // Random Position & Size
+            snow.style.left = Math.random() * 100 + 'vw';
+            const size = Math.random() * 15 + 10; 
+            snow.style.fontSize = size + 'px';
+            
+            // Random Duration & Opacity
+            snow.style.animationDuration = Math.random() * 3 + 3 + 's'; 
+            snow.style.opacity = Math.random() * 0.7 + 0.3;
+            
+            snowContainer.appendChild(snow); 
+            
+            // Cleanup
+            setTimeout(() => snow.remove(), 6000); 
+        } 
+        setInterval(createSnow, 100);
+
+        // 5. ✅ MOUSE MAGIC TRAIL
+        document.addEventListener('mousemove', (e) => { 
+            const trail = document.createElement('div'); 
+            trail.className = 'sparkle'; // Using sparkle class for trail
+            trail.style.left = e.pageX + 'px'; 
+            trail.style.top = e.pageY + 'px'; 
+            document.body.appendChild(trail); 
+            setTimeout(() => trail.remove(), 800); 
+        });
+
+        // 6. Auto Music Play
+        let isPlaying = false;
+        function toggleMusic() { 
+            const audio = document.getElementById('bg-music'); 
+            const icon = document.getElementById('music-icon'); 
+            if (isPlaying) { 
+                audio.pause(); 
+                icon.className = "fas fa-music text-warning"; 
+            } else { 
+                audio.play(); 
+                icon.className = "fas fa-pause text-white"; 
+            } 
+            isPlaying = !isPlaying; 
+        }
+
+        document.body.addEventListener('click', function() {
+            const audio = document.getElementById('bg-music');
+            if(audio.paused) {
+                audio.play();
+                document.getElementById('music-icon').className = "fas fa-pause text-white";
+                isPlaying = true;
+            }
+        }, { once: true });
+    </script>
+
+</body>
+</html>
